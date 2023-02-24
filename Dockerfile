@@ -1,6 +1,7 @@
 ARG python_version=3.11-slim
+ARG platform_arch=amd64
 
-FROM --platform=linux/amd64 python:$python_version
+FROM --platform=linux/$platform_arch python:$python_version
 
 # POETRY_VIRTUALENVS_IN_PROJECT is required to ensure in-projects venvs mounted from the host in dev
 # don't get prioritised by `poetry run`
