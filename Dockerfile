@@ -12,9 +12,7 @@ ENV POETRY_VERSION=1.3.1 \
 
 ENV PATH="$POETRY_HOME/bin:$PATH"
 
-RUN apk update \
-  && apk upgrade \
-  && apk add curl \
-  && rm -rf /var/lib/apt/lists/*
+RUN apk -U upgrade \
+  && apk --no-cache add curl gcc musl-dev python3-dev libffi-dev openssl-dev cargo pkgconfig
 
 RUN curl -sSL https://install.python-poetry.org | python
