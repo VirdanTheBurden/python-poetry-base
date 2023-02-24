@@ -53,7 +53,7 @@ jobs:
           cache-from: type=registry,ref=ghcr.io/virdantheburden/python-poetry-base:${{ matrix.python_version }}:${{ matrix.architecture }}
           cache-to: type=inline
           tags: |
-            ghcr.io/virdantheburden/python-poetry-base:${{ matrix.python_version }}
+            ghcr.io/virdantheburden/python-poetry-base:${{ matrix.python_version }}:${{ matrix.architecture }}
           build-args: |
             python_version=${{ matrix.python_version }}
             platform_arch=${{ matrix.architecture }}
