@@ -15,6 +15,7 @@ jobs:
     strategy:
       matrix:
         python_version: ["3.9", 3.9-slim, "3.10", 3.10-slim, "3.11", 3.11-slim, "3", 3-slim]
+        architecture: ["amd64", "arm64"]
     runs-on: ubuntu-latest
 
     steps:
@@ -46,9 +47,11 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          cache-from: type=registry,ref=ghcr.io/owl-corp/python-poetry-base:${{ matrix.python_version }}
+          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/python-poetry-base:${{ matrix.python_version }}
           cache-to: type=inline
           tags: |
-            ghcr.io/owl-corp/python-poetry-base:${{ matrix.python_version }}
+            ghcr.io/${{ github.repository_owner}}/python-poetry-base:${{ matrix.python_version }}:${{ matrix.architecture }}
           build-args: |
             python_version=${{ matrix.python_version }}
+          platforms:
+            linux/${{ matrix.architecture }}
