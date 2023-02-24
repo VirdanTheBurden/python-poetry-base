@@ -13,7 +13,7 @@ ENV POETRY_VERSION=1.3.1 \
 ENV PATH="$POETRY_HOME/bin:$PATH"
 
 RUN apk update \
-  && apk -y upgrade \
+  && apk upgrade \
   && apk add curl \
   && rm -rf /var/lib/apt/lists/*
 
