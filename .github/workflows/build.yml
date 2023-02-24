@@ -47,10 +47,10 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/python-poetry-base:${{ matrix.python_version }}
+          cache-from: type=registry,ref=ghcr.io/virdantheburden/python-poetry-base:${{ matrix.python_version }}
           cache-to: type=inline
           tags: |
-            ghcr.io/${{ github.repository_owner}}/python-poetry-base:${{ matrix.python_version }}
+            ghcr.io/virdantheburden/python-poetry-base:${{ matrix.python_version }}
           build-args: |
             python_version=${{ matrix.python_version }}
           platforms:
