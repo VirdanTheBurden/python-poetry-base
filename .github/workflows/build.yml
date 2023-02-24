@@ -53,4 +53,4 @@ jobs:
           build-args: |
             python_version=${{ matrix.python_version }}
           platforms:
-            linux/arm64, linux/amd64
+            linux/aarch64, linux/amd64
