@@ -1,4 +1,4 @@
-ARG python_version=3.11-slim
+ARG python_version=3.11-alpine
 
 FROM python:$python_version
 
@@ -12,9 +12,9 @@ ENV POETRY_VERSION=1.3.1 \
 
 ENV PATH="$POETRY_HOME/bin:$PATH"
 
-RUN apt-get update \
-  && apt-get -y upgrade \
-  && apt-get install --no-install-recommends -y curl \
-  && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apk update \
+  && apk -y upgrade \
+  && apk add curl \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sSL https://install.python-poetry.org | python
